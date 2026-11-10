@@ -183,39 +183,3 @@ organiza las secciones principales y sus tarjetas. También se emplean component
 `card`, `nav`/`nav-link`, botones, alertas, grupos de entrada y controles de formulario;
 los estilos personalizados conservan la paleta Glow Pink y sus efectos.
 
----
-
-## 9. Bootstrap como base de maquetación (≈ 70 %+)
-
-La maquetación se reorganizó para que **Bootstrap 5.3.3 sea la base** y `style.css` quede
-solo para la identidad visual (colores, degradados, brillos, animaciones).
-
-| Medición | Antes | Ahora |
-|----------|-------|-------|
-| Clases Bootstrap / clases de maquetación (sin contar iconos Font Awesome) — HTML estático | 51 % | **79 %** |
-| Mismo cálculo sobre el DOM ya renderizado (incluye las tarjetas que genera JS) | 45 % | **76 %** |
-| Elementos HTML con al menos una clase Bootstrap | 30 % | **70 %** |
-| Clases Bootstrap / todas las clases (contando iconos `fa-*`) | 39 % | 68 % |
-
-### Qué se cambió
-- **Rejilla correcta:** cada tarjeta (categorías, packs, beneficios, opiniones, contacto) ahora vive
-  dentro de su columna `col-*`, con `card h-100` dentro. Antes la columna y la tarjeta eran el mismo
-  elemento y se perdían los espacios (gutters) entre tarjetas.
-- **Utilidades en lugar de CSS propio:** `d-flex`, `flex-column`, `gap-*`, `align-items-*`,
-  `justify-content-*`, `py-*`/`px-*`/`mb-*`, `text-center`, `rounded-4/5/pill/circle`,
-  `position-*`, `border-top`, `overflow-*`, `fw-*`, `lh-*`, `list-unstyled`, `d-none d-lg-inline-flex`,
-  `d-lg-none`, etc. Las reglas de `style.css` equivalentes se eliminaron.
-- **Menú móvil:** el punto de corte pasó de 900 px a **992 px** (`lg` de Bootstrap) en CSS y JS;
-  el botón hamburguesa usa `d-lg-none` y el botón "Pedir ahora" `d-none d-lg-inline-flex`.
-- **Variables de Bootstrap con la marca:** en `:root` se definieron `--bs-border-color`,
-  `--bs-border-radius-xl` (20 px, `.rounded-4`) y `--bs-border-radius-xxl` (30 px, `.rounded-5`).
-- **Tarjetas del catálogo (JS):** cada pack se genera como `<div class="col-12 col-sm-6 col-xl-4">`
-  con la tarjeta dentro, usando utilidades Bootstrap para pie, precios, valoración y botón.
-
-### Errores del original que quedaron corregidos
-- **Hero:** el `div.container` se cerraba antes de tiempo y el logo caía debajo del texto en escritorio.
-- **Promo "Combo Glowy Total":** la cuenta regresiva quedaba fuera de la caja rosa.
-- **Ventana de confirmación y aviso "Agregado…":** nunca se veían porque las clases `.modal` y
-  `.toast` chocaban con las de Bootstrap (que las ocultan). Se renombraron a `.confirm-modal`
-  y `.glow-toast`.
-
