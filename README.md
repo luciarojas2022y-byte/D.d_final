@@ -219,9 +219,3 @@ solo para la identidad visual (colores, degradados, brillos, animaciones).
   `.toast` chocaban con las de Bootstrap (que las ocultan). Se renombraron a `.confirm-modal`
   y `.glow-toast`.
 
-### Nota
-Las clases propias que se conservan son las de identidad visual (`btn--primary`, `chip`, `text-glow`,
-`hero__*`, `product__*`, `ticker`, `settings`…) y las que usa `main.js` (`.cat-card`, `.filter`,
-`.nav__link`, `.quiz__opt`). El espaciado vertical de las secciones usa `py-5` (3 rem) en lugar
-del `clamp()` anterior (3–5 rem), por lo que en pantallas grandes es algo más compacto.
-
